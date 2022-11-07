@@ -1,15 +1,13 @@
-from typing import Union
-from fastapi import FastAPI
+from fastapi import FastAPI,Request,Response
 from fastapi.testclient import TestClient
+from auth import authClass
+authService =authClass()
 
 app = FastAPI()
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+# @app.get("/")
+# authClass().read_root()
 
+# @app.get("/items/{item_id}")
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
